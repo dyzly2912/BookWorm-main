@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+
+<div id="battle-screen">
+    <div class="fighter-container">
+        <div class="heart-bar" id="player-health"></div>
+        <div class="stickman" id="player-sprite">
+            <div class="head"></div>
+            <div class="torso"></div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+        </div>
+    </div>
+
+    <div class="fighter-container">
+        <div class="heart-bar" id="enemy-health"></div>
+        <div class="stickman" id="enemy-sprite">
+            <div class="head"></div>
+            <div class="torso"></div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+        </div>
+    </div>
+</div>
+
+<div id="word-bar">SELECT LETTERS</div>
+<div id="game-board">
+    <div id="tile-grid">
+        <div class="column" id="col-0"></div>
+        <div class="column" id="col-1"></div>
+        <div class="column" id="col-2"></div>
+        <div class="column" id="col-3"></div>
+    </div>
+</div>
+
+<div class="controls">
+    <button id="shuffle-btn">SCRAMBLE</button>
+    <button id="attack-btn" disabled>ATTACK!</button>
+</div>
+
+<script src="{{ url_for('static', filename='js/gameConfig.js') }}"></script>
+<script src="{{ url_for('static', filename='js/entity.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tile.js') }}"></script>
+<script src="{{ url_for('static', filename='js/gameBoard.js') }}"></script>
+<script src="{{ url_for('static', filename='js/services.js') }}"></script>
+<script src="{{ url_for('static', filename='js/gameManager.js') }}"></script>
+
+<!-- GAME OVER MODAL -->
+<div id="game-over-modal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+        <h2 id="game-over-title" class="modal-title">YOU WIN!</h2>
+        <p id="game-over-msg" style="margin-bottom: 25px; color: #dfe6e9; font-size: 18px;">You have defeated the enemy.</p>
+        <button class="btn btn-full glow-effect" style="color: white; font-size: 18px; font-weight: bold; border: none; padding: 15px; border-radius: 10px; cursor: pointer;" onclick="location.reload()">PLAY AGAIN</button>
+        <a href="/" class="btn btn-full glass-btn" style="color: white; font-size: 18px; font-weight: bold; border: none; padding: 15px; border-radius: 10px; cursor: pointer; margin-top: 15px;">BACK TO LOBBY</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+<div class="lobby-wrapper">
+    <!-- Dynamic background elements -->
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+    <div class="stars"></div>
+
+    <div class="home-container glass-panel">
+        <div class="brand">
+            <h1 class="title">WORD <span class="highlight">BATTLE</span></h1>
+            <p class="subtitle">Forge words. Deal damage. Conquer the arena.</p>
+        </div>
+
+        <div class="menu">
+            <a href="/game" class="btn btn-primary glow-effect">
+                <span class="icon">⚔️</span>
+                <span class="text">ENTER ARENA</span>
+            </a>
+            <button class="btn btn-secondary glass-btn" onclick="showGuide()">
+                <span class="icon">📜</span>
+                <span class="text">HOW TO PLAY</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="guide-modal" class="modal">
+    <div class="modal-backdrop" onclick="closeGuide()"></div>
+    <div class="modal-content glass-panel guide-panel">
+        <button class="close-btn" onclick="closeGuide()">&times;</button>
+        <h2>The Ancient Rules</h2>
+        <div class="guide-list">
+            <div class="guide-item">
+                <div class="guide-icon">✨</div>
+                <div class="guide-text">Select adjacent magical tiles to forge powerful words.</div>
+            </div>
+            <div class="guide-item">
+                <div class="guide-icon">🔥</div>
+                <div class="guide-text">Valid words unleash devastating attacks upon your enemies.</div>
+            </div>
+            <div class="guide-item">
+                <div class="guide-icon">💥</div>
+                <div class="guide-text">Longer words and rare letters deal significantly higher damage.</div>
+            </div>
+        </div>
+        <button class="btn btn-primary modal-btn glow-effect" onclick="closeGuide()">Understood</button>
+    </div>
+</div>
+
+<script>
+    function showGuide() {
+        const modal = document.getElementById("guide-modal");
+        modal.classList.add("visible");
+    }
+
+    function closeGuide() {
+        const modal = document.getElementById("guide-modal");
+        modal.classList.remove("visible");
+    }
+</script>
+{% endblock %}
