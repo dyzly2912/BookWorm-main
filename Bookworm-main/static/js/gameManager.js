@@ -77,6 +77,7 @@ class GameManager {
         projectile.style.top = wordBarRect.top + (wordBarRect.height / 2) + 'px';
         document.body.appendChild(projectile);
 
+        SoundService.playShootSound();
         this.player.playAnimation('player-attacking', 400);
 
         setTimeout(() => {
@@ -90,6 +91,7 @@ class GameManager {
         setTimeout(() => {
             projectile.remove();
             this.enemy.takeDamage(damage);
+            SoundService.playHitSound();
             this.enemy.playAnimation('enemy-hit', 300);
 
             this.wordBar.textContent = `HIT! -${damage.toFixed(2)}`;
@@ -125,6 +127,7 @@ class GameManager {
             projectile.style.textShadow = '0 0 20px #fff';
             document.body.appendChild(projectile);
             
+            SoundService.playShootSound();
             this.enemy.playAnimation('enemy-attacking', 400);
             
             setTimeout(() => {
@@ -136,6 +139,7 @@ class GameManager {
             setTimeout(() => {
                 projectile.remove();
                 this.player.takeDamage(damage);
+                SoundService.playHitSound();
                 this.player.playAnimation('player-hit', 300);
                 
                 this.wordBar.textContent = `OUCH! -${damage.toFixed(2)}`;
